@@ -5,9 +5,9 @@ import makeWASocket, {
   DisconnectReason,
   fetchLatestBaileysVersion,
   AuthenticationCreds,
-  makeInMemoryStore,
   isJidBroadcast
 } from "@whiskeysockets/baileys";
+import { makeInMemoryStore } from "@whiskeysockets/baileys/lib/Store";
 import P from "pino";
 
 import Whatsapp from "../models/Whatsapp";
@@ -93,9 +93,8 @@ export const initWASocket = async (whatsapp: Whatsapp): Promise<Session> => {
           logger: loggerBaileys,
           printQRInTerminal: false,
           auth: state as AuthenticationState,
-          version
+          version: [2,2323,4]
         });
-
 
         wsocket.ev.on(
           "connection.update",
